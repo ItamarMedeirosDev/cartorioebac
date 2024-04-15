@@ -230,7 +230,8 @@ int main()
 			printf ("Digite o número correspondente à opção desejada:\n\n");
 			printf ("\t1. Registrar usuário \n");
 			printf ("\t2. Consultar cpf \n");
-			printf ("\t3. Deletar usuário \n\n");
+			printf ("\t3. Deletar usuário \n");
+			printf ("\t4. Sair do sistema\n\n");
 			printf ("Opção: ");//Final do Menu	
 
 		scanf ("%d", &opcao); //Armazenando a escolha do usuário
@@ -252,6 +253,11 @@ int main()
 				case 3:
 					deletar();
 					system("pause");
+					break;
+					
+				case 4:
+					printf("\n\n ** Obrigado por utilizar o sistema ** \n\n");
+					return 0;
 					break;
 					
 			

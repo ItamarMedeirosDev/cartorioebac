@@ -11,7 +11,11 @@ int registrar() //função responsável por cadastrar os usuários no sistema.
 		char sobrenome[40];
 		char email[100];
 		char cargo[40];
+		char continuar;
 	
+	do 
+	
+	{
 		
 		printf("Digite o CPF a ser cadastrado: \n");//coletando informação do usuário
 		scanf("%s", cpf);//armazenamento na string
@@ -72,9 +76,17 @@ int registrar() //função responsável por cadastrar os usuários no sistema.
 		
 		
 		printf("\n\n*** Usuário cadastrado com sucesso!***\n\n");//mensagem de retorno para o usuário
+		
+		
+		printf("Deseja cadastrar outro usuário? Digite 's' para sim ou 'n' para não\n\n");
+        scanf(" %c", &continuar); // Note o espaço antes de %c para consumir o caractere de nova linha deixado pelo scanf anterior
+        
+    } while (continuar == 's' || continuar == 'S'); // Continua o loop se o usuário digitar 's' ou 'S'
 
+    return 0;
+}
 
-	}
+	
 
 int consultar()//inicio das configurações da função consultar
 
@@ -83,7 +95,11 @@ int consultar()//inicio das configurações da função consultar
 		
 		char cpf[40];//cri as variáveis
 		char conteudo[200];
+		char continuar;
 		
+	do
+		{
+				
 		printf("Digite o CPF a ser consultado: \n");//coleta informação do usuário
 		scanf("%s", cpf);//armazena na string
 		
@@ -122,12 +138,20 @@ int consultar()//inicio das configurações da função consultar
     		printf("\n");//espaço estético ao fim das informações
 		}
 
-	
+			printf("\nDeseja consultar novo cpf? Digite s para sim ou n para não\n\n");
+			scanf(" %c", &continuar);
+			
+			}
+			
+			while (continuar == 's' || continuar == 'S');
+			return 0;
+			
+}
 	
 	//fecha o arquivo
 	
 		
-	}
+
 
 int deletar() //inicio das configurações da função deletar
 	{
@@ -135,6 +159,12 @@ int deletar() //inicio das configurações da função deletar
     	char cpf[40];
     	char conteudo[200];
     	char opcao;
+    	char continuar;
+    
+    do
+    
+    {
+	
 
     	setlocale(LC_ALL, "portuguese");//define idioma como português
 
@@ -148,7 +178,7 @@ int deletar() //inicio das configurações da função deletar
 		
 		{
         printf("\n\nCPF não encontrado.\n\n");//devolve mensagem caso não encontre a informação
-        return 0; // Retorna 0 se CPF não for encontrado
+        return 0;
     	}
 
     while (fgets(conteudo, 200, file) != NULL) //inicia um loop
@@ -197,7 +227,7 @@ int deletar() //inicio das configurações da função deletar
 	
 	{
         printf("\n\nUsuário não foi deletado.\n\n");//devolve informação para o usuário
-        return 0; // Retorna 0 para voltar ao menu
+        
     
 	} else //alternativa
 	
@@ -210,7 +240,14 @@ int deletar() //inicio das configurações da função deletar
 	
 	while (opcao != '1' && opcao != '2'); // estabelece um loop
 	
+    
+    printf("\nDeseja deletar outro usuário? Digite s para sim ou n para não\n\n");
+    scanf(" %c", &continuar);
+}
+    while (continuar == 's' || continuar =='S');
+    
     return 0;
+    
 	}
 
 	

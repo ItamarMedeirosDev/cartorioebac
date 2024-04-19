@@ -180,7 +180,8 @@ int deletar() //inicio das configurações da função deletar
         printf("\n\nCPF não encontrado.\n\n");//devolve mensagem caso não encontre a informação
         return 0;
     	}
-
+		
+		
     while (fgets(conteudo, 200, file) != NULL) //inicia um loop
 	
 	{
@@ -198,6 +199,7 @@ int deletar() //inicio das configurações da função deletar
         token = strtok(NULL, ",");
         printf("Cargo: %s\n", token);
     }
+    fclose(file);
 	do //inicio da resposta do condicional para quebra o loop
 	{
 
@@ -243,8 +245,12 @@ int deletar() //inicio das configurações da função deletar
     
     printf("\nDeseja deletar outro usuário? Digite s para sim ou n para não\n\n");
     scanf(" %c", &continuar);
+    
+    
 }
     while (continuar == 's' || continuar =='S');
+    
+    
     
     return 0;
     
@@ -256,54 +262,82 @@ int main()
 	{
 		int opcao=0; //Definindo as variáveis
 		int loop=1; //criação de nova variável
+		char senha[10]="a";// variável para inserção de senha
+		
+		setlocale (LC_ALL,"portuguese"); //Denifindo Linguagem
+	
+	do
+	{
+			
+		printf ("*** Cartório da EBAC ***\n\n");
+		printf("Login de Administrador\n\nDigite a senha de acesso:\n\n");
+		scanf("%s",senha);
 
-		for(loop=1;loop=1;)//Estabelecendo a função de repetição
+		
+		if(strcmp(senha, "admin")!=0)
 		{
-
-			system("cls"); //limpar sistema
-			setlocale (LC_ALL,"portuguese"); //Denifindo Linguagem
-
-			printf ("*** Cartório da EBAC ***\n\n"); //Inicio do Menu
-			printf ("Digite o número correspondente à opção desejada:\n\n");
-			printf ("\t1. Registrar usuário \n");
-			printf ("\t2. Consultar cpf \n");
-			printf ("\t3. Deletar usuário \n");
-			printf ("\t4. Sair do sistema\n\n");
-			printf ("Opção: ");//Final do Menu	
-
-		scanf ("%d", &opcao); //Armazenando a escolha do usuário
-		system ("cls");// Sistema "limpa" a tela depois da seleção de opção
+			printf("\n\nXX Senha incorreta XX\n\n");
+			
+		}
 		
+	}
+		while(strcmp(senha, "admin") != 0);
 		
-		switch(opcao)//inicio das opções
+				
+		if(strcmp(senha, "admin") == 0)
+
+		
+		{
+			
+			for(loop=1;loop=1;)//Estabelecendo a função de repetição
 			{
-				case 1:
-					registrar();
-					system("pause");
-					break;
+
+				system("cls"); //limpar sistema
 				
-				case 2:
-					consultar();
-					system("pause");
-					break;
-				
-				case 3:
-					deletar();
-					system("pause");
-					break;
+	
+				printf ("*** Cartório da EBAC ***\n\n"); //Inicio do Menu
+				printf ("Digite o número correspondente à opção desejada:\n\n");
+				printf ("\t1. Registrar usuário \n");
+				printf ("\t2. Consultar usuário \n");
+				printf ("\t3. Deletar usuário \n");
+				printf ("\t4. Sair do sistema\n\n");
+				printf ("Opção: ");//Final do Menu	
 					
-				case 4:
-					printf("\n\n ** Obrigado por utilizar o sistema ** \n\n");
-					return 0;
-					break;
+			scanf ("%d", &opcao); //Armazenando a escolha do usuário
+			system ("cls");// Sistema "limpa" a tela depois da seleção de opção
+			
+			
+			switch(opcao)//inicio das opções
+				{
+					case 1:
+						registrar();
+						system("pause");
+						break;
+					
+					case 2:
+						consultar();
+						system("pause");
+						break;
+				
+					case 3:
+						deletar();
+						system("pause");
+						break;
+					
+					case 4:
+						printf("\n\n ** Obrigado por utilizar o sistema ** \n\n");
+						return 0;
+						break;
 					
 			
-				default:
-					printf("Opção inválida\n\n");
-					system("pause");
-					break;//fim das opções
+					default:
+						printf("Opção inválida\n\n");
+						system("pause");
+						break;//fim das opções
+				}
 			}
-
+		
 		}
+			
 	}	
 
